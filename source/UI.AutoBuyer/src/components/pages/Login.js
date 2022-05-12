@@ -1,23 +1,28 @@
-import React from 'react'
+import React , { useState } from "react";
 import { Link } from 'react-router-dom'
 import '../../App.css'
 import axios from "axios";
 import { cacheAdapterEnhancer } from "axios-extensions";
-
 import { useHistory } from "react-router-dom";
 
 export default function LoginPage() {
-
-  let history = useHistory();
-
+  const [values, setValues] = useState({
+    username: "",
+    password: ""
+  });
+  const history = useHistory();
+  const handleInputChange = prop => event => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
   const handleSubmit = event => {
     event.preventDefault();
-    const tokenEndpoint = "https://www.google.com/";
+    const tokenEndpoint = "https://autobuyer-api.azurewebsites.net/auth/token/";
     const postBody = {
-      username: "",
-      password: ""
+      username: values.username.toLowerCase(),
+      password: values.password,
+      appname: "Desktop.AutoBuyer"
     };
-    fetchApi("GET", tokenEndpoint, postBody, false)
+    fetchApi("POST", tokenEndpoint, postBody, false)
       .then(response => {
         if (response.status === 200) {
 
@@ -42,12 +47,13 @@ export default function LoginPage() {
             <form id="login" onSubmit={handleSubmit}>
                 <p>
                     <label>Username</label><br/>
-                    <input type="text" name="first_name" required />
+                    <br/>
+                    <input type="username" name="username" required onChange={handleInputChange("username")} />
                 </p>
                 <p>
                     <label>Password</label>
                     <br/>
-                    <input type="password" name="password" required />
+                    <input type="password" name="password" required onChange={handleInputChange("password")} />
                 </p>
                 <p>
                     <button id="sub_btn" type="submit">Login</button>
