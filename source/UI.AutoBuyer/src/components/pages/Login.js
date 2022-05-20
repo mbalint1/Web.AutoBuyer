@@ -25,8 +25,7 @@ export default function LoginPage() {
     fetchApi("POST", tokenEndpoint, postBody, false)
       .then(response => {
         if (response.status === 200) {
-
-          // do something
+          sessionStorage.setItem("access_token", response.data.accessToken)
           history.push("/main")
         } else {
 
