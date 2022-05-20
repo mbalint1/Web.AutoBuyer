@@ -7,7 +7,7 @@ import BackgroundImage from '../../assets/images/bg2.jpg'
 export default function Landing() {
     return (
         <header style={ HeaderStyle }>
-            <h1 className="main-title text-center">Fifa 22 AutoBuyer</h1>
+            <h1 className="main-title text-center">FIFA 22 AutoBuyer</h1>
             <div className="buttons text-center">
                 <Link to="/login">
                     <button className="primary-button">log in</button>

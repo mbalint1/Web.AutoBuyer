@@ -38,7 +38,6 @@ body {
     padding-top: 10rem;
     font-size: 4rem;
     font-family: "Roboto";
-    text-transform: uppercase
 }
 
 .main-para {
@@ -139,5 +138,13 @@ form span {
 
 /***    Home Page     ***/
 .home-page-title {
-    color: rgb(0, 58, 250)
+    color: rgb(185, 169, 253);
+    font-weight: 500;
+    font-family: "Roboto";
+}
+
+#topRight {
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
